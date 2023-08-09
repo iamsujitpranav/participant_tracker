@@ -1,0 +1,36 @@
+h1 Participants Enrolled by Coordinator for Registry
+
+= form_with url: registry_show_by_registry_path, method: :get, class: 'mt-4' do |f|
+  .form-group
+    = f.label :registry_id
+    = f.collection_select :registry_id, Registry.open, :id, :name, prompt: "Select Registry", class: 'form-control'
+
+  = f.submit "Show Participants", class: 'btn btn-primary'
+
+- if @participants_by_coordinator.present?
+  - @participants_by_coordinator.each do |coordinator, enrollments|
+    h3 = "Coordinator: #{coordinator.name}"
+    table.table.table-striped
+      thead
+        tr
+          th Coordinator Name
+          th Participant Name
+          th Gender
+          th Date of Birth
+          th Registry Name 
+          th Location 
+          th Date of Enrollment
+          th Method of Contact
+          th Remarks
+      tbody
+        - enrollments.each do |enrollment|
+          tr
+            td = coordinator.name
+            td= enrollment.participant.name
+            td = enrollment.participant.gender
+            td = enrollment.participant.date_of_birth
+            td = enrollment.registry.name 
+            td = enrollment.registry.location 
+            td = enrollment.date_of_enrollment
+            td = enrollment.method_of_contact
+            td = enrollment.remarks

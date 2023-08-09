@@ -1,0 +1,27 @@
+/ app/views/enrollments/_form.html.slim
+
+= form_for enrollment do |f|
+  .form-group
+    = f.label :participant_id
+    = f.collection_select :participant_id, Participant.all, :id, :name, prompt: true, class: "form-control"
+
+  .form-group
+    = f.label :registry_id
+    = f.collection_select :registry_id, Registry.all, :id, :name, prompt: true, class: "form-control"
+  .form-group
+    = f.label :coordinator_id
+    = f.collection_select :coordinator_id, Coordinator.all, :id, :name, prompt: true, class: "form-control"
+
+  .form-group
+    = f.label :date_of_enrollment
+    = f.date_field :date_of_enrollment, class: "form-control"
+
+  .form-group
+    = f.label :method_of_contact
+    = f.select :method_of_contact, ["phone", "email"], prompt: true, class: "form-control"
+
+  .form-group
+    = f.label :remarks
+    = f.text_area :remarks, class: "form-control"
+
+  = f.submit "Enroll", class: "btn btn-primary"

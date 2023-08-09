@@ -1,0 +1,19 @@
+h1 Coordinators
+
+table.table.table-striped
+  thead
+    tr
+      th Name
+      th Email
+      th Phone Number
+      th Edit
+
+  tbody
+    - @coordinators.each do |coordinator|
+      tr
+        td= coordinator.name
+        td= coordinator.email
+        td= coordinator.phone_number
+        td= link_to 'Edit', edit_coordinator_path(coordinator), class: 'btn btn-primary'
+
+= link_to 'New Coordinator', new_coordinator_path, class: 'btn btn-primary'

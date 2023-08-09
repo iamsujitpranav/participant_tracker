@@ -1,0 +1,16 @@
+/ app/views/registries/_form.html.slim
+
+= form_for @registry do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control"
+
+  .form-group
+    = f.label :location
+    = f.text_field :location, class: "form-control"
+
+  .form-group
+    = f.label :state
+    = f.text_field :state, class: "form-control"
+
+  = f.submit "Save", class: "btn btn-primary"

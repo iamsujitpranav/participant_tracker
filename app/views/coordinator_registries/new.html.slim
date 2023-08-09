@@ -1,0 +1,23 @@
+h1 Setup Registry and Associate Coordinators
+
+= form_with model: @registry, url: coordinator_registries_path, class: 'mt-4' do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :location
+    = f.text_field :location, class: 'form-control'
+
+  .form-group
+    = f.label :state
+    = f.select :state, Registry.states.keys.map { |state| [state.to_s.capitalize, state] }, class: 'form-control'
+
+  h3 Coordinators
+  .form-group
+    - Coordinator.all.each do |coordinator|
+      .form-check
+        = check_box_tag "registry[coordinator_ids][]", coordinator.id, @registry.coordinators.include?(coordinator)
+        = label_tag nil, coordinator.name, class: 'form-check-label'
+
+  = f.submit "Setup Registry", class: 'btn btn-primary'

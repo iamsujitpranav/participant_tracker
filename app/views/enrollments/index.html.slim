@@ -1,0 +1,23 @@
+h1 Enrollments
+
+table.table.table-striped
+  thead
+    tr
+      th Participant
+      th Registry
+      th Date of Enrollment
+      th Method of Contact
+      th Remarks
+      th Enrollment Participants
+  tbody
+    - @enrollments.each do |enrollment|
+      tr
+        td= enrollment.participant.name
+        td= enrollment.registry.name
+        td= enrollment.date_of_enrollment
+        td= enrollment.method_of_contact
+        td= enrollment.remarks
+        td= link_to "Enrollment Participants", registry_show_by_registry_path(enrollment.registry)
+
+= link_to 'New Enrollment', new_enrollment_path, class: 'btn btn-primary'
+= link_to 'New registry', new_registry_path, class: 'btn btn-primary'

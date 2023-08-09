@@ -1,0 +1,17 @@
+h1 Manage Participants
+
+.container
+  table.table.table-striped
+    thead
+      tr
+        th Name
+        th Gender
+        th Date of Birth
+    tbody
+      - @participants.each do |participant|
+        tr
+          td = participant.name
+          td = participant.gender
+          td = participant.date_of_birth
+
+  = link_to "Back", root_path, class: "btn btn-secondary mt-2"
