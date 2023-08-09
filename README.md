@@ -48,4 +48,4 @@ COPY (
   FROM participants p
   JOIN coordinators c ON p.coordinator_id = c.id
   ORDER BY c.name, p.name
-) TO '/path/to/exported_file.csv' CSV HEADER;
+) TO '/home/sujith/exported_file.csv' CSV HEADER;
